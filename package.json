@@ -1,15 +1,16 @@
 {
   "name": "vehicle-registration-and-management-platform",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Production grade vehicle registration and management dashboard frontend.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@tanstack/react-query": "^5.95.2",
