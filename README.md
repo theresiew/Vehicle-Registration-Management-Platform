@@ -2,18 +2,23 @@
 
 A production-style React frontend for a Vehicle Registration and Management assignment. The app combines mock client-side authentication, protected routes, strict mirrored validation, segmented data fetching, and a polished dashboard UI for working with a vehicle registry API.
 
+## Live Links
+
+- GitHub Repository: https://github.com/theresiew/Vehicle-Registration-Management-Platform
+- Live Deployment: https://vehicle-registration-management-platform-89t7mahuy.vercel.app
+
 ## Features
 
-- Public home page with cached `GET /vehicle` listing
+- Public home page with cached vehicle listing
 - Mock login using React Context and `localStorage`
 - Protected routes for dashboard, details, create, edit, and delete flows
 - Multi-step vehicle registration wizard powered by React Hook Form and Zod
 - Client-side validation aligned to the assignment rules to reduce `422` errors
 - Segmented vehicle details tabs using:
-  - `GET /vehicle/:id/info`
-  - `GET /vehicle/:id/owner`
-  - `GET /vehicle/:id/registration`
-  - `GET /vehicle/:id/insurance`
+  - `GET /api/vehicle-service/vehicle/:id/info`
+  - `GET /api/vehicle-service/vehicle/:id/owner`
+  - `GET /api/vehicle-service/vehicle/:id/registration`
+  - `GET /api/vehicle-service/vehicle/:id/insurance`
 - TanStack Query caching, invalidation, and mutation handling
 - Toast-based feedback for API and validation errors
 
@@ -101,7 +106,7 @@ Validation is centralized in `src/lib/validation.js`.
 ## Deployment Notes
 
 - Deploy the frontend to Vercel, Netlify, or Render
-- Set `VITE_API_BASE_URL` in your hosting platform environment variables
+- Set `VITE_API_BASE_URL=https://student-management-system-backend.up.railway.app` in your hosting platform environment variables
 - If deploying behind static hosting, configure SPA routing rewrites so React Router routes resolve correctly
 
 ## Verification
@@ -110,4 +115,4 @@ Validation is centralized in `src/lib/validation.js`.
 
 ## Important Note
 
-The exact API base URL was not included in the workspace, so the project is configured to read it from `VITE_API_BASE_URL`. Update that value before final submission and deployment.
+The frontend is configured to read its backend URL from `VITE_API_BASE_URL`. The deployed app uses the Railway backend at `https://student-management-system-backend.up.railway.app`.
