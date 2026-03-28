@@ -32,6 +32,13 @@ export function toDateTimeLocal(value) {
   )}:${pad(date.getMinutes())}`;
 }
 
+export function toIsoDateTime(value) {
+  if (!value) return value;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toISOString();
+}
+
 export function getInitialFormValues(data) {
   return {
     manufacture: data?.manufacture ?? "",
@@ -96,13 +103,13 @@ export function mapVehicleFormToApiPayload(values) {
     email: values.email,
     plateNumber: values.plateNumber,
     registrationStatus: values.registrationStatus,
-    registrationDate: values.registrationDate,
-    expiryDate: values.expiryDate,
+    registrationDate: toIsoDateTime(values.registrationDate),
+    expiryDate: toIsoDateTime(values.expiryDate),
     state: values.state,
     plateType: values.plateType,
     policyNumber: values.policyNumber,
     companyName: values.companyName,
-    insuranceExpiryDate: values.insuranceExpiryDate,
+    insuranceExpiryDate: toIsoDateTime(values.insuranceExpiryDate),
     insuranceStatus: values.insuranceStatus,
     insuranceType: values.insuranceType,
     roadworthyCert: values.roadworthyCert,
