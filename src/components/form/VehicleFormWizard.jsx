@@ -15,7 +15,7 @@ import VehicleInfoStep from "./steps/VehicleInfoStep";
 
 const steps = [VehicleInfoStep, OwnerStep, RegistrationInsuranceStep];
 
-function VehicleFormWizard({ mode, initialData, mutation, id }) {
+function VehicleFormWizard({ mode, initialData, mutation, id, vehicles = [] }) {
   const [step, setStep] = useState(0);
   const StepComponent = steps[step];
   const navigate = useNavigate();
@@ -30,6 +30,8 @@ function VehicleFormWizard({ mode, initialData, mutation, id }) {
 
   const {
     formState: { errors },
+    clearErrors,
+    setError,
     handleSubmit,
     register,
     reset,
@@ -48,8 +50,81 @@ function VehicleFormWizard({ mode, initialData, mutation, id }) {
 
   const previousStep = () => setStep((current) => Math.max(current - 1, 0));
 
+  const checkDuplicateValues = (values) => {
+    const currentId = String(id ?? initialData?.id ?? initialData?._id ?? "");
+    const normalizedPlate = values.plateNumber.trim().toLowerCase();
+    const normalizedNationalId = values.nationalId.trim();
+    const normalizedMobile = values.mobileNumber.trim();
+    const normalizedEmail = values.email.trim().toLowerCase();
+
+    const match = vehicles.find((vehicle) => {
+      const vehicleId = String(vehicle?.id ?? vehicle?._id ?? "");
+
+      if (mode === "edit" && currentId && vehicleId === currentId) {
+        return false;
+      }
+
+      return (
+        vehicle?.plateNumber?.trim().toLowerCase() === normalizedPlate ||
+        vehicle?.nationalId?.trim() === normalizedNationalId ||
+        vehicle?.mobile?.trim() === normalizedMobile ||
+        vehicle?.mobileNumber?.trim() === normalizedMobile ||
+        vehicle?.email?.trim().toLowerCase() === normalizedEmail
+      );
+    });
+
+    if (!match) {
+      clearErrors(["plateNumber", "nationalId", "mobileNumber", "email"]);
+      return false;
+    }
+
+    let hasDuplicate = false;
+
+    if (match?.plateNumber?.trim().toLowerCase() === normalizedPlate) {
+      setError("plateNumber", {
+        type: "manual",
+        message: "This plate number already exists in the registry.",
+      });
+      hasDuplicate = true;
+    }
+
+    if (match?.nationalId?.trim() === normalizedNationalId) {
+      setError("nationalId", {
+        type: "manual",
+        message: "This national ID is already linked to another vehicle.",
+      });
+      hasDuplicate = true;
+    }
+
+    if ((match?.mobile ?? match?.mobileNumber)?.trim() === normalizedMobile) {
+      setError("mobileNumber", {
+        type: "manual",
+        message: "This mobile number already exists in the registry.",
+      });
+      hasDuplicate = true;
+    }
+
+    if (match?.email?.trim().toLowerCase() === normalizedEmail) {
+      setError("email", {
+        type: "manual",
+        message: "This email already exists in the registry.",
+      });
+      hasDuplicate = true;
+    }
+
+    if (hasDuplicate) {
+      showToast("Please use unique vehicle and owner identifiers before submitting.", "error");
+    }
+
+    return hasDuplicate;
+  };
+
   const onSubmit = handleSubmit(async (values) => {
     try {
+      if (checkDuplicateValues(values)) {
+        return;
+      }
+
       const payload = mapVehicleFormToApiPayload(values);
 
       const response = await mutation.mutateAsync(payload);
