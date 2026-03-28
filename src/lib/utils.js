@@ -88,8 +88,9 @@ export function mapVehicleFormToApiPayload(values) {
     ownerName: values.ownerName,
     ownerType: values.ownerType,
     nationalId: values.nationalId,
-    passportNumber: values.passportNumber || undefined,
-    companyRegNumber: values.companyRegistrationNumber || undefined,
+    // The live backend crashes when these are omitted, so we send safe fallbacks.
+    passportNumber: values.passportNumber || "NOT-PROVIDED",
+    companyRegNumber: values.companyRegistrationNumber || "NOT-APPLICABLE",
     address: values.address,
     mobile: values.mobileNumber,
     email: values.email,

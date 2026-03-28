@@ -43,6 +43,12 @@ export function normalizeApiError(error) {
     return [payload.message];
   }
 
+  if (error?.response?.status === 500) {
+    return [
+      "The backend returned a server error. Try using unique values for plate number, national ID, mobile number, and email.",
+    ];
+  }
+
   if (!error?.response) {
     return [
       configuredBaseURL
