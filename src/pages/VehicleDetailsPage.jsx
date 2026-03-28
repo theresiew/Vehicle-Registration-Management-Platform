@@ -64,7 +64,7 @@ function VehicleDetailsPage() {
           </article>
           <article>
             <span>Purpose</span>
-            <strong>{vehicle.purpose ?? "N/A"}</strong>
+            <strong>{vehicle.purpose ?? vehicle.vehiclePurpose ?? "N/A"}</strong>
           </article>
         </div>
         <DetailTabs

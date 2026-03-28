@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { stepLabels } from "../../lib/constants";
-import { getInitialFormValues } from "../../lib/utils";
+import { getInitialFormValues, mapVehicleFormToApiPayload } from "../../lib/utils";
 import { stepFieldMap, vehicleSchema } from "../../lib/validation";
 import { normalizeApiError } from "../../services/api";
 import Button from "../ui/Button";
@@ -50,13 +50,7 @@ function VehicleFormWizard({ mode, initialData, mutation, id }) {
 
   const onSubmit = handleSubmit(async (values) => {
     try {
-      const payload = {
-        ...values,
-        year: Number(values.year),
-        engineCapacity: Number(values.engineCapacity),
-        odometerReading: Number(values.odometerReading),
-        seatingCapacity: Number(values.seatingCapacity),
-      };
+      const payload = mapVehicleFormToApiPayload(values);
 
       const response = await mutation.mutateAsync(payload);
       showToast(mode === "create" ? "Vehicle registered successfully." : "Vehicle updated successfully.", "success");

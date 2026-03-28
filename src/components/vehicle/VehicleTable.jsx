@@ -32,7 +32,7 @@ function VehicleTable({ vehicles = [], showActions = false }) {
               </td>
               <td>{formatLabel(vehicle.vehicleType ?? "OTHER")}</td>
               <td>{formatLabel(vehicle.registrationStatus ?? vehicle.vehicleStatus ?? "PENDING")}</td>
-              <td>{formatLabel(vehicle.purpose ?? "PERSONAL")}</td>
+              <td>{formatLabel(vehicle.purpose ?? vehicle.vehiclePurpose ?? "PERSONAL")}</td>
               {showActions ? (
                 <td>
                   <Link to={`/vehicle/${vehicle.id ?? vehicle._id}`}>

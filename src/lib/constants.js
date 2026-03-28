@@ -15,7 +15,7 @@ export const vehicleStatuses = ["NEW", "USED", "REBUILT"];
 export const ownerTypes = ["INDIVIDUAL", "COMPANY", "NGO", "GOVERNMENT"];
 export const plateTypes = ["PRIVATE", "COMMERCIAL", "GOVERNMENT", "DIPLOMATIC", "PERSONALIZED"];
 export const registrationStatuses = ["ACTIVE", "SUSPENDED", "EXPIRED", "PENDING"];
-export const insuranceStatuses = ["ACTIVE", "SUSPENDED", "EXPIRED"];
+export const insuranceStatuses = ["ACTIVE", "EXPIRED", "CANCELLED"];
 
 export const queryKeys = {
   vehicles: ["vehicles"],
