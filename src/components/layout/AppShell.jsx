@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { CarFront, LayoutDashboard, LogIn, LogOut, PlusSquare, ShieldCheck } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { cn } from "../../lib/utils";
+import viteLogo from "../../assets/vite-logo.svg";
 
 const guestLinks = [{ to: "/", label: "Public Registry", icon: CarFront }];
 const authLinks = [
@@ -17,12 +18,15 @@ function AppShell({ children }) {
     <div className="app-shell">
       <aside className="sidebar">
         <div className="brand">
-          <div className="brand-icon">
-            <ShieldCheck size={24} />
+          <div className="brand-icon-wrap">
+            <div className="brand-icon">
+              <ShieldCheck size={24} />
+            </div>
+            <img src={viteLogo} alt="Vite logo" className="brand-vite-logo" />
           </div>
           <div>
             <p>Velocity Registry</p>
-            <span>Vehicle operations dashboard</span>
+            <span>Vehicle operations dashboard powered by Vite</span>
           </div>
         </div>
 

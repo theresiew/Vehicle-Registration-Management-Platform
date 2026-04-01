@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 257" aria-hidden="true">
+  <defs>
+    <linearGradient id="vite-logo-a" x1="6.01%" x2="235.24%" y1="12.58%" y2="85.28%">
+      <stop offset="0%" stop-color="#41D1FF" />
+      <stop offset="100%" stop-color="#BD34FE" />
+    </linearGradient>
+    <linearGradient id="vite-logo-b" x1="194.65%" x2="50%" y1="8.82%" y2="65.93%">
+      <stop offset="0%" stop-color="#FFEA83" />
+      <stop offset="8.33%" stop-color="#FFDD35" />
+      <stop offset="100%" stop-color="#FFA800" />
+    </linearGradient>
+  </defs>
+  <path
+    fill="url(#vite-logo-a)"
+    d="M255.15 37.94 134.9 252.18c-2.48 4.42-8.83 4.45-11.36.06L.85 37.95c-2.73-4.78 1.36-10.63 6.8-9.72l120.37 20.14a6.52 6.52 0 0 0 2.15 0l118.17-20.12c5.43-.92 9.52 4.92 6.81 9.69Z"
+  />
+  <path
+    fill="url(#vite-logo-b)"
+    d="M185.43.06 96.44 17.5a3.26 3.26 0 0 0-2.63 2.76L88.33 61.4a3.26 3.26 0 0 0 4.02 3.52l24.77-5.71a3.26 3.26 0 0 1 3.92 3.91l-7.36 36.04a3.26 3.26 0 0 0 4.1 3.8l15.3-4.68a3.26 3.26 0 0 1 4.14 4.04l-11.7 56.33c-.74 3.58 4.02 5.53 6.01 2.47l1.33-2.05 72.51-144.73c1.21-2.41-.88-5.15-3.54-4.63l-25.5 4.93a3.26 3.26 0 0 1-3.75-3.66l16.64-57.63C191.41 2.59 188.5-.54 185.43.06Z"
+  />
+</svg>

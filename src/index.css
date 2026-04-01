@@ -55,6 +55,13 @@ select {
   align-items: center;
 }
 
+.brand-icon-wrap {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  flex-shrink: 0;
+}
+
 .brand p,
 .brand strong,
 .brand span,
@@ -80,6 +87,15 @@ select {
   border-radius: 16px;
   background: linear-gradient(135deg, #51c4d3, #f19551);
   color: #132238;
+}
+
+.brand-vite-logo {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 8px 14px rgba(65, 209, 255, 0.28));
 }
 
 .sidebar-nav {
